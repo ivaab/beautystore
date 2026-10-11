@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2720%27 fill=%27black%27/><text x=%2750%27 y=%2772%27 text-anchor=%27middle%27 font-family=%27Arial, Helvetica, sans-serif%27 font-weight=%27800%27 font-size=%2764%27 fill=%27white%27>V</text></svg>">
+    <title>Registracija - Vellure</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <a href="index.html" class="logo">Vellure</a>
+
+        <form class="nav-search" id="navSearchForm">
+            <input type="text" id="navSearchInput" placeholder="Pretraži kozmetiku...">
+            <button type="submit" aria-label="Pretraga"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><line x1="20" y1="20" x2="15.5" y2="15.5"></line></svg></button>
+        </form>
+
+        <button class="nav-hamburger" id="navHamburger" aria-label="Izbornik">☰</button>
+
+        <div class="nav-links">
+            <a href="index.html">Početna</a>
+            <a href="shop.html">Proizvodi</a>
+            <a href="cart.html">Košarica</a>
+            <a href="profile.html" id="profileLink" style="display:none;">Moj profil</a>
+            <a href="users.html" id="usersLink" style="display:none;">Korisnici</a>
+            <a href="login.html" id="loginLink" style="display:none;">Prijava</a>
+            <a href="#" id="logoutBtn" style="display:none;">Odjava</a>
+        </div>
+    </div>
+
+    <div class="auth-page-wrap">
+        <div class="auth-container">
+
+            <h2>Registracija</h2>
+
+            <form id="registerForm">
+
+                <label for="fullName">Ime i prezime</label>
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Unesi svoje ime i prezime">
+                <span class="field-error" id="fullNameError"></span>
+
+                <label for="email">Email adresa</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Unesi svoj email">
+                <span class="field-error" id="emailError"></span>
+
+                <label for="password">Lozinka</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Minimalno 8 znakova">
+                <span class="field-error" id="passwordError"></span>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="termsCheckbox">
+                    <label for="termsCheckbox">Prihvaćam <a href="#" id="openTermsLink">Uvjete korištenja i Pravila privatnosti</a></label>
+                </div>
+                <span class="field-error" id="termsError"></span>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="newsletterCheckbox">
+                    <label for="newsletterCheckbox">Želim primati obavijesti o popust kodovima i akcijama</label>
+                </div>
+
+                <button type="submit" id="registerBtn">
+                    Kreiraj račun
+                </button>
+
+            </form>
+
+            <p>
+                Već imaš račun?
+                <a href="login.html">Prijavi se</a>
+            </p>
+
+        </div>
+    </div>
+
+    <!-- TERMS MODAL -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content modal-content-wide">
+            <h3>Uvjeti korištenja i Pravila privatnosti</h3>
+            <div class="terms-text">
+                <p><strong>1. Prikupljanje podataka.</strong> Prilikom registracije prikupljamo ime i prezime, email adresu i podatke o tvojim narudžbama, isključivo radi pružanja usluge kupovine na Vellure webshopu.</p>
+                <p><strong>2. Kolačići i lokalna pohrana.</strong> Koristimo lokalnu pohranu preglednika za pamćenje sadržaja košarice prije nego što narudžba bude poslana.</p>
+                <p><strong>3. Program bodova.</strong> Sudjelovanjem u programu bodova prihvaćaš da se broj bodova i povijest narudžbi vežu uz tvoj korisnički račun.</p>
+                <p><strong>4. Brisanje računa.</strong> U svakom trenutku možeš trajno izbrisati svoj račun i sve povezane podatke putem stranice "Moj profil".</p>
+                <p><strong>5. Kontakt.</strong> Za sva pitanja vezana uz privatnost podataka možeš nas kontaktirati na hello@vellure.example.</p>
+                <p style="color: var(--color-text-muted); font-size: 13px;">Ovo je demonstracijski tekst izrađen u sklopu završnog rada, ne pravni dokument.</p>
+            </div>
+            <div class="modal-actions">
+                <button type="button" id="closeTermsModal" class="primary-btn" style="flex: none; width: 100%;">Zatvori</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/nav.js"></script>
+    <script type="module" src="js/register.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2720%27 fill=%27black%27/><text x=%2750%27 y=%2772%27 text-anchor=%27middle%27 font-family=%27Arial, Helvetica, sans-serif%27 font-weight=%27800%27 font-size=%2764%27 fill=%27white%27>V</text></svg>">
+    <title>Trgovina - Vellure</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <a href="index.html" class="logo">Vellure</a>
+
+        <form class="nav-search" id="navSearchForm">
+            <input type="text" id="navSearchInput" placeholder="Pretraži kozmetiku...">
+            <button type="submit" aria-label="Pretraga"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><line x1="20" y1="20" x2="15.5" y2="15.5"></line></svg></button>
+        </form>
+
+        <button class="nav-hamburger" id="navHamburger" aria-label="Izbornik">☰</button>
+
+        <div class="nav-links">
+            <a href="index.html">Početna</a>
+            <a href="shop.html">Proizvodi</a>
+            <a href="cart.html">Košarica</a>
+            <a href="profile.html" id="profileLink" style="display:none;">Moj profil</a>
+            <a href="users.html" id="usersLink" style="display:none;">Korisnici</a>
+            <a href="login.html" id="loginLink" style="display:none;">Prijava</a>
+            <a href="#" id="logoutBtn" style="display:none;">Odjava</a>
+        </div>
+    </div>
+
+    <!-- TITLE -->
+    <h2 class="section-title">Svi proizvodi</h2>
+
+    <!-- FILTERS -->
+    <div class="filters">
+        <button class="filter active" data-skin="all">✨ Sve</button>
+        <button class="filter" data-skin="dry">💧 Suha koža</button>
+        <button class="filter" data-skin="oily">🧴 Masna koža</button>
+        <button class="filter" data-skin="combination">🌀 Kombinirana koža</button>
+        <button class="filter" data-skin="sensitive">🌸 Osjetljiva koža</button>
+    </div>
+
+    <div class="sort-row">
+        <label for="sortSelect">Sortiraj po</label>
+        <select id="sortSelect">
+            <option value="default">Istaknuto</option>
+            <option value="price-asc">Cijena: od niže do više</option>
+            <option value="price-desc">Cijena: od više do niže</option>
+        </select>
+    </div>
+
+    <!-- PRODUCTS -->
+    <p id="resultsCount" class="results-count"></p>
+
+    <div id="productsContainer" class="products"></div>
+
+    <p id="noResults" class="empty-state" style="display:none;">Nema proizvoda koji odgovaraju pretrazi.</p>
+
+    <button id="openAddModal" class="add-fab" style="display:none;">
+    ＋ Dodaj proizvod
+    </button>
+
+    <div id="addModal" class="modal">
+
+        <div class="modal-content">
+
+            <h3 id="modalTitle">Dodaj proizvod</h3>
+
+            <input id="name" placeholder="Naziv">
+            <input id="price" placeholder="Cijena" type="number" step="0.01">
+            <input id="imageUrl" placeholder="URL slike (opcionalno)" type="url">
+            <img id="imagePreview" class="modal-img-preview" style="display:none;">
+
+            <select id="skinType">
+                <option value="" disabled selected>Tip kože</option>
+                <option value="dry">Suha</option>
+                <option value="oily">Masna</option>
+                <option value="combination">Kombinirana</option>
+                <option value="sensitive">Osjetljiva</option>
+            </select>
+
+            <textarea id="description" placeholder="Opis"></textarea>
+
+            <div class="modal-actions">
+                <button id="addProductBtn" class="primary-btn">Spremi</button>
+                <button id="closeModal" class="cancel-btn">Odustani</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">Vellure</a>
+                <p>Personalizirana njega kože bez komplikacija — proizvodi odabrani za tvoju kožu, ne za bilo koga drugog.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kupovina</h4>
+                <a href="shop.html">Svi proizvodi</a>
+                <a href="quiz.html">Kviz za kožu</a>
+                <a href="cart.html">Košarica</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <span>hello@vellure.example</span>
+                <span>Pon–Pet, 9–17h</span>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 Vellure — Sva prava pridržana</div>
+    </div>
+
+    <!-- SCRIPTS -->
+<script type="module" src="js/nav.js"></script>
+<script type="module" src="js/scroll-reveal.js"></script>
+<script type="module" src="js/shop.js"></script>
+
+</body>
+</html>

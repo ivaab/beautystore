@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2720%27 fill=%27black%27/><text x=%2750%27 y=%2772%27 text-anchor=%27middle%27 font-family=%27Arial, Helvetica, sans-serif%27 font-weight=%27800%27 font-size=%2764%27 fill=%27white%27>V</text></svg>">
+    <title>Moj profil - Vellure</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <a href="index.html" class="logo">Vellure</a>
+
+        <form class="nav-search" id="navSearchForm">
+            <input type="text" id="navSearchInput" placeholder="Pretraži kozmetiku...">
+            <button type="submit" aria-label="Pretraga"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><line x1="20" y1="20" x2="15.5" y2="15.5"></line></svg></button>
+        </form>
+
+        <button class="nav-hamburger" id="navHamburger" aria-label="Izbornik">☰</button>
+
+        <div class="nav-links">
+            <a href="index.html">Početna</a>
+            <a href="shop.html">Proizvodi</a>
+            <a href="cart.html">Košarica</a>
+            <a href="profile.html" id="profileLink" style="display:none;">Moj profil</a>
+            <a href="users.html" id="usersLink" style="display:none;">Korisnici</a>
+            <a href="login.html" id="loginLink" style="display:none;">Prijava</a>
+            <a href="#" id="logoutBtn" style="display:none;">Odjava</a>
+        </div>
+    </div>
+
+    <!-- ACCESS DENIED -->
+    <div id="accessDenied" class="admin-message" style="display:none;">
+        <p>Moraš biti prijavljen/a da bi vidio/la svoj profil.</p>
+        <a href="login.html">Idi na prijavu</a>
+    </div>
+
+    <!-- PROFILE -->
+    <div id="profileContent" style="display:none;">
+
+        <div class="profile-summary profile-summary-hub">
+            <div class="profile-hero-row">
+                <div id="profileAvatar" class="profile-hero-icon"></div>
+                <div class="profile-hero-text">
+                    <span class="profile-eyebrow">✨ Moj profil</span>
+                    <h2 id="profileGreeting" class="profile-greeting"></h2>
+                    <p class="profile-hero-subtitle">Tvoj prostor za narudžbe, bodove i rutinu njege.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="membership-card">
+            <div class="membership-card-top">
+                <span class="membership-card-brand">Vellure Club</span>
+                <span class="membership-card-chip"></span>
+            </div>
+            <div class="membership-card-points">
+                <span id="cardPointsValue" class="membership-card-points-value">0000</span>
+                <span class="membership-card-points-label">bodova</span>
+            </div>
+            <div class="membership-card-bottom">
+                <div class="membership-card-field">
+                    <span class="membership-card-label">Član</span>
+                    <span id="cardMemberName" class="membership-card-value">—</span>
+                </div>
+                <div class="membership-card-field membership-card-field-right">
+                    <span class="membership-card-label">Član od</span>
+                    <span id="cardMemberSince" class="membership-card-value">—</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-hub-cards profile-hub-cards-row">
+
+            <a href="orders.html" class="hub-card">
+                <span class="hub-card-icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 8l9-5 9 5-9 5-9-5z"></path>
+                        <path d="M3 8v8l9 5 9-5V8"></path>
+                        <path d="M12 13v8"></path>
+                    </svg>
+                </span>
+                <h3>Moje narudžbe</h3>
+                <p id="ordersCountText">—</p>
+            </a>
+
+            <a href="points.html" class="hub-card">
+                <span class="hub-card-icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"></path>
+                    </svg>
+                </span>
+                <h3>Moji bodovi</h3>
+                <p id="pointsCountText">—</p>
+            </a>
+
+            <a href="wishlist.html" class="hub-card">
+                <span class="hub-card-icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20.5c-.3 0-.6-.1-.8-.3C7.8 17.4 3 13.4 3 9.1 3 6.3 5.2 4 8 4c1.5 0 2.9.7 3.8 1.9L12 6.2l.2-.3C13.1 4.7 14.5 4 16 4c2.8 0 5 2.3 5 5.1 0 4.3-4.8 8.3-8.2 11.1-.2.2-.5.3-.8.3z"></path>
+                    </svg>
+                </span>
+                <h3>Moja lista želja</h3>
+                <p id="wishlistCountText">—</p>
+            </a>
+
+            <a href="routine.html" class="hub-card">
+                <span class="hub-card-icon">
+                    <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 3v4l-2.5 3A3 3 0 0 0 6.5 12v6a3 3 0 0 0 3 3h5a3 3 0 0 0 3-3v-6a3 3 0 0 0-1-2L14 7V3"></path>
+                        <path d="M9 3h6"></path>
+                        <line x1="6.5" y1="14" x2="17.5" y2="14"></line>
+                    </svg>
+                </span>
+                <h3>Moja rutina</h3>
+                <p id="routineSkinTypeText">—</p>
+            </a>
+
+        </div>
+
+        <div class="profile-actions-row">
+            <button type="button" id="editProfileBtn" class="secondary-btn">✎ Uredi profil</button>
+            <button type="button" id="deleteAccountBtn" class="danger-btn">Izbriši profil</button>
+        </div>
+
+    </div>
+
+    <!-- EDIT PROFILE MODAL -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content modal-content-wide edit-profile-modal-content">
+
+            <div id="editProfileStep">
+                <h3>Uredi profil</h3>
+
+                <label for="editFullName">Ime i prezime</label>
+                <input type="text" id="editFullName" placeholder="Ime i prezime">
+                <span class="field-error" id="editFullNameError"></span>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancelEditProfileBtn" class="cancel-btn">Odustani</button>
+                    <button type="button" id="saveEditProfileBtn" class="primary-btn">Spremi</button>
+                </div>
+
+                <button type="button" id="showChangePasswordBtn" class="link-btn">Promijeni lozinku</button>
+            </div>
+
+            <div id="changePasswordStep" style="display:none;">
+                <h3>Promijeni lozinku</h3>
+
+                <label for="currentPasswordInput">Trenutna lozinka</label>
+                <input type="password" id="currentPasswordInput" placeholder="Trenutna lozinka">
+
+                <label for="newPasswordInput">Nova lozinka</label>
+                <input type="password" id="newPasswordInput" placeholder="Minimalno 8 znakova">
+                <span class="field-error" id="changePasswordError"></span>
+
+                <div class="modal-actions">
+                    <button type="button" id="backToEditProfileBtn" class="cancel-btn">Natrag</button>
+                    <button type="button" id="confirmChangePasswordBtn" class="primary-btn">Promijeni lozinku</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- DELETE ACCOUNT CONFIRM MODAL -->
+    <div id="deleteAccountModal" class="modal">
+        <div class="modal-content">
+
+            <div id="deleteConfirmStep">
+                <span class="modal-sad-emoji">😢</span>
+                <h3>Jesi li siguran/na da želiš otići?</h3>
+                <p>Brisanjem profila trajno gubiš sve svoje bodove, narudžbe i listu želja. Ova radnja se ne može poništiti.</p>
+                <div class="modal-actions">
+                    <button type="button" id="cancelDeleteAccountBtn" class="cancel-btn">Odustani</button>
+                    <button type="button" id="confirmDeleteAccountBtn" class="primary-btn danger-confirm-btn">Da, obriši</button>
+                </div>
+            </div>
+
+            <div id="deleteReauthStep" style="display:none;">
+                <h3>Potvrdi lozinku</h3>
+                <p>Iz sigurnosnih razloga moraš ponovno unijeti lozinku prije trajnog brisanja profila.</p>
+                <input type="password" id="deleteReauthPassword" placeholder="Lozinka">
+                <span class="field-error" id="deleteReauthError"></span>
+                <div class="modal-actions">
+                    <button type="button" id="cancelReauthBtn" class="cancel-btn">Odustani</button>
+                    <button type="button" id="confirmReauthBtn" class="primary-btn danger-confirm-btn">Potvrdi i obriši</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">Vellure</a>
+                <p>Personalizirana njega kože bez komplikacija — proizvodi odabrani za tvoju kožu, ne za bilo koga drugog.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kupovina</h4>
+                <a href="shop.html">Svi proizvodi</a>
+                <a href="quiz.html">Kviz za kožu</a>
+                <a href="cart.html">Košarica</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <span>hello@vellure.example</span>
+                <span>Pon–Pet, 9–17h</span>
+            </div>
+        </div>
+
+        <div class="footer-bottom">© 2026 Vellure — Sva prava pridržana</div>
+    </div>
+
+    <script type="module" src="js/nav.js"></script>
+    <script type="module" src="js/scroll-reveal.js"></script>
+    <script type="module" src="js/profile.js"></script>
+
+</body>
+</html>
